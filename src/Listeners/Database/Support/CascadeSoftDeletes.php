@@ -14,7 +14,9 @@ class CascadeSoftDeletes
         foreach ($event->relationships as $relationship) {
             $relation = $model->{$relationship}();
             if ($relation instanceof Relation) {
-                $relation->delete();
+                foreach ($model->{$relationship} as $detail) {
+                    $detail->delete();
+                }
             } else {
                 throw new LogicException(sprintf(
                     '%s [%s] must exist and return an object of type Illuminate\Database\Eloquent\Relations\Relation',
