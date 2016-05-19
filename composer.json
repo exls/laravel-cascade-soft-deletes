@@ -1,0 +1,26 @@
+{
+  "name": "exls/laravel-cascade-soft-deletes",
+  "description": "Cascading queued or regular deletes and restores for Eloquent models that implement soft deletes",
+  "type": "utility",
+  "require": {
+    "php": ">=5.4",
+    "illuminate/database": "~5.0",
+    "illuminate/events": "~5.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.8"
+  },
+  "autoload": {
+    "psr-4": {
+      "Exls\\LaravelCascadeSoftDeletes\\": "src/"
+    }
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Anton Pavlov",
+      "email": "anton.pavlov.it@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable"
+}
