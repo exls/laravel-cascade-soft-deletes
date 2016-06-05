@@ -14,7 +14,11 @@ class CascadeSoftDeletes
         foreach ($event->relationships as $relationship) {
             $relation = $model->{$relationship}();
             if ($relation instanceof Relation) {
-                foreach ($model->{$relationship} as $detail) {
+                $relations = $model->{$relationship};
+                if (!is_array($relations)) {
+                    $relations = [$relations];
+                }
+                foreach ($relations as $detail) {
                     $detail->delete();
                 }
             } else {
