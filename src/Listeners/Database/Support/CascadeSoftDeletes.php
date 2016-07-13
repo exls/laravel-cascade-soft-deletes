@@ -1,6 +1,7 @@
 <?php
 namespace Exls\LaravelCascadeSoftDeletes\Listeners\Database\Support;
 use Exls\LaravelCascadeSoftDeletes\Events;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use LogicException;
 
@@ -15,7 +16,7 @@ class CascadeSoftDeletes
             $relation = $model->{$relationship}();
             if ($relation instanceof Relation) {
                 $relations = $model->{$relationship};
-                if (!is_array($relations)) {
+                if ($relations instanceof Model) {
                     $relations = [$relations];
                 }
                 foreach ($relations as $detail) {
