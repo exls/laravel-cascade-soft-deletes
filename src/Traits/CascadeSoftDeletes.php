@@ -23,10 +23,10 @@ trait CascadeSoftDeletes
     {
         static::deleting(function ($model) {
             if ($relationships = $model->getCascadingDeletes()) {
-                Event::fire(new Events\Database\Support\CascadeSoftDeletes($model, $relationships));
+                Event::dispatch(new Events\Database\Support\CascadeSoftDeletes($model, $relationships));
             }
             if ($relationships = $model->getQueuedCascadingDeletes()) {
-                Event::fire(new Events\Database\Support\QueuedCascadeSoftDeletes($model, $relationships));
+                Event::dispatch(new Events\Database\Support\QueuedCascadeSoftDeletes($model, $relationships));
             }
         });
     }
